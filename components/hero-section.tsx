@@ -62,8 +62,8 @@ export function HeroSection() {
 
       <div className="absolute bottom-32 right-12 glass-effect p-3 rounded-lg animate-pulse hidden lg:block">
         <div className="flex items-center space-x-2">
-          <Lock className="w-4 h-4 text-green-400" />
-          <span className="text-sm text-green-400 font-medium">Secure</span>
+          <Lock className="w-4 h-4 text-blue-400" />
+          <span className="text-sm text-blue-400 font-medium">Secure</span>
         </div>
       </div>
 
