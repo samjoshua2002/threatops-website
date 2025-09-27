@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { Shield, Users, Target } from "lucide-react"
-
+// this is the sample text i enetereed
 export function AboutHero() {
   const [mounted, setMounted] = useState(false)
 
