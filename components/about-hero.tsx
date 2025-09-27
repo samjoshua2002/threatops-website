@@ -25,7 +25,7 @@ export function AboutHero() {
             <div>
               <div className="inline-flex items-center px-4 py-2 rounded-full glass-effect mb-8">
                 <Shield className="w-4 h-4 text-accent mr-2" />
-                <span className="text-sm text-muted-foreground">About ThreatOps </span>
+                <span className="text-sm text-muted-foreground">About ThreatOps</span>
               </div>
 
               <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
