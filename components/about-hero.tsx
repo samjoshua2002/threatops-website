@@ -23,7 +23,7 @@ export function AboutHero() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Content */}
             <div>
-              <div className="inline-flex items-center px-4 py-2 rounded-full glass-effect mb-8">
+              <div className="inline-flex items-center px-4 py-2 mt-10 rounded-full glass-effect mb-8">
                 <Shield className="w-4 h-4 text-accent mr-2" />
                 <span className="text-sm text-muted-foreground">About ThreatOps</span>
               </div>
