@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Menu, X, Shield } from "lucide-react"
+import { Menu, X } from "lucide-react"
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
@@ -35,10 +35,11 @@ export function Navigation() {
     >
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 ">
-          {/* Logo */}
+          {/* Brand Name (No Logo) */}
           <Link href="/" className="flex items-center space-x-2">
-            <Shield className="h-8 w-8 text-accent animate-pulse" />
-            <span className="text-xl font-bold text-gradient">ThreatOps</span>
+            <span className="text-xl font-bold" style={{ color: "#FDA172" }}>
+              SafeGrey
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -47,12 +48,14 @@ export function Navigation() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-muted-foreground hover:text-accent transition-colors duration-200"
+                className="text-gray-400 hover:text-[#FDA172] transition-colors duration-200"
               >
                 {item.label}
               </Link>
             ))}
-            <Button className="glow-accent">Get Started</Button>
+            <Button className="glow-accent" style={{ backgroundColor: "#FDA172", color: "white" }}>
+              Get Started
+            </Button>
           </div>
 
           {/* Mobile menu button */}
@@ -71,14 +74,16 @@ export function Navigation() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="block px-3 py-2 text-muted-foreground hover:text-accent transition-colors duration-200"
+                  className="block px-3 py-2 text-gray-400 hover:text-[#FDA172] transition-colors duration-200"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.label}
                 </Link>
               ))}
               <div className="px-3 py-2">
-                <Button className="w-full glow-accent">Get Started</Button>
+                <Button className="w-full glow-accent" style={{ backgroundColor: "#FDA172", color: "white" }}>
+                  Get Started
+                </Button>
               </div>
             </div>
           </div>

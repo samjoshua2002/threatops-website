@@ -222,3 +222,79 @@
     }
   }
 }
+@layer utilities {
+  /* Royal Purple Theme Accent Glow */
+  .glow-purple {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+  }
+
+  /* Gradient Background Section */
+  .section-bg-purple {
+    background: linear-gradient(135deg, #120024 0%, #1a0936 50%, #2d0b4e 100%);
+  }
+
+  /* Gradient Divider Line */
+  .divider-purple {
+    background: linear-gradient(to bottom, #7e22ce, #a855f7, #d946ef);
+  }
+
+  /* Gradient Text */
+  .text-gradient-purple {
+    background: linear-gradient(135deg, #a855f7 0%, #d946ef 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Neon Pulse Glow (Purple) */
+  .animate-pulse-purple {
+    animation: pulse-purple 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes pulse-purple {
+    from {
+      box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+    }
+    to {
+      box-shadow: 0 0 30px rgba(168, 85, 247, 0.8);
+    }
+  }
+}
+@layer utilities {
+  /* Blue Theme Accent Glow */
+  .glow-blue {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+  }
+
+  /* Gradient Background Section */
+  .section-bg-blue {
+    background: linear-gradient(135deg, #020817 0%, #0a1a3a 50%, #0f2027 100%);
+  }
+
+  /* Gradient Divider Line */
+  .divider-blue {
+    background: linear-gradient(to bottom, #2563eb, #3b82f6, #06b6d4);
+  }
+
+  /* Gradient Text */
+  .text-gradient-blue {
+    background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Neon Pulse Glow (Blue) */
+  .animate-pulse-blue {
+    animation: pulse-blue 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes pulse-blue {
+    from {
+      box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+    }
+    to {
+      box-shadow: 0 0 30px rgba(6, 182, 212, 0.8);
+    }
+  }
+}
