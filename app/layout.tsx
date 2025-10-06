@@ -7,9 +7,7 @@ import { Suspense } from "react"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "ThreatOps - Proactive Cybersecurity Solutions",
-  description:
-    "Advanced cybersecurity services including threat hunting, incident response, and security consulting. Protect your business with ThreatOps.",
+  title: "Safe Grey",
   generator: "v0.app",
 }
 

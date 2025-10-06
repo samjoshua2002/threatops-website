@@ -4,13 +4,13 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* ThreatOps custom color system */
-  --threatops-dark-base: #031018;
-  --threatops-dark-secondary: #0a1a2a;
-  --threatops-accent: #00f0e0;
-  --threatops-accent-dim: #00b8aa;
-  --threatops-text-primary: #ffffff;
-  --threatops-text-secondary: #a0a9b8;
+  /* Theme color system */
+  --threatops-dark-base: #000000; /* black */
+  --threatops-dark-secondary: #1c1c1c; /* dark grey */
+  --threatops-accent: #E5453D; /* theme red */
+  --threatops-accent-dim: #b13b34; /* darker red */
+  --threatops-text-primary: #ffffff; /* white */
+  --threatops-text-secondary: #cccccc; /* grey */
   --threatops-border: rgba(255, 255, 255, 0.1);
   --threatops-glass: rgba(255, 255, 255, 0.05);
 
@@ -28,16 +28,16 @@
   --muted-foreground: var(--threatops-text-secondary);
   --accent: var(--threatops-accent);
   --accent-foreground: var(--threatops-dark-base);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --destructive: #E5453D;
+  --destructive-foreground: #E5453D;
   --border: var(--threatops-border);
   --input: var(--threatops-border);
   --ring: var(--threatops-accent);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
+  --chart-1: #E5453D;
+  --chart-2: #b13b34;
+  --chart-3: #cccccc;
+  --chart-4: #1c1c1c;
+  --chart-5: #ffffff;
   --radius: 0.625rem;
   --sidebar: var(--threatops-dark-secondary);
   --sidebar-foreground: var(--threatops-text-primary);
@@ -64,16 +64,16 @@
   --muted-foreground: var(--threatops-text-secondary);
   --accent: var(--threatops-accent);
   --accent-foreground: var(--threatops-dark-base);
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --destructive: #E5453D;
+  --destructive-foreground: #E5453D;
   --border: var(--threatops-border);
   --input: var(--threatops-border);
   --ring: var(--threatops-accent);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
+  --chart-1: #E5453D;
+  --chart-2: #b13b34;
+  --chart-3: #cccccc;
+  --chart-4: #1c1c1c;
+  --chart-5: #ffffff;
   --sidebar: var(--threatops-dark-secondary);
   --sidebar-foreground: var(--threatops-text-primary);
   --sidebar-primary: var(--threatops-accent);
@@ -131,23 +131,20 @@
   }
   body {
     @apply bg-background text-foreground;
-    /* Added gradient background */
     background: linear-gradient(135deg, #000000 0%, #0f0f10 100%);
     min-height: 100vh;
   }
 }
 
-/* ThreatOps custom animations and effects */
 @layer utilities {
   .glass-effect {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    
   }
   .glass-effect:hover {
-  color: #ffffff;
-}
+    color: #ffffff;
+  }
 
   .glass-effect-strong {
     background: rgba(255, 255, 255, 0.08);
@@ -157,11 +154,11 @@
   }
 
   .glow-accent {
-    box-shadow: 0 0 20px rgba(0, 240, 224, 0.3);
+    box-shadow: 0 0 20px rgba(229, 69, 61, 0.3);
   }
 
   .text-gradient {
-    background: linear-gradient(135deg, #00f0e0 0%, #ffffff 100%);
+    background: linear-gradient(135deg, #E5453D 0%, #ffffff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -187,10 +184,10 @@
 
   @keyframes pulse-glow {
     from {
-      box-shadow: 0 0 20px rgba(0, 240, 224, 0.3);
+      box-shadow: 0 0 20px rgba(229, 69, 61, 0.3);
     }
     to {
-      box-shadow: 0 0 30px rgba(0, 240, 224, 0.6);
+      box-shadow: 0 0 30px rgba(229, 69, 61, 0.6);
     }
   }
 
@@ -222,79 +219,18 @@
     }
   }
 }
-@layer utilities {
-  /* Royal Purple Theme Accent Glow */
-  .glow-purple {
-    box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
-  }
 
-  /* Gradient Background Section */
-  .section-bg-purple {
-    background: linear-gradient(135deg, #120024 0%, #1a0936 50%, #2d0b4e 100%);
-  }
-
-  /* Gradient Divider Line */
-  .divider-purple {
-    background: linear-gradient(to bottom, #7e22ce, #a855f7, #d946ef);
-  }
-
-  /* Gradient Text */
-  .text-gradient-purple {
-    background: linear-gradient(135deg, #a855f7 0%, #d946ef 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  /* Neon Pulse Glow (Purple) */
-  .animate-pulse-purple {
-    animation: pulse-purple 2s ease-in-out infinite alternate;
-  }
-
-  @keyframes pulse-purple {
-    from {
-      box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
-    }
-    to {
-      box-shadow: 0 0 30px rgba(168, 85, 247, 0.8);
-    }
-  }
+/* For all moving dots inside graph-dots */
+.graph-dots div {
+  will-change: transform, opacity;
 }
-@layer utilities {
-  /* Blue Theme Accent Glow */
-  .glow-blue {
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
-  }
 
-  /* Gradient Background Section */
-  .section-bg-blue {
-    background: linear-gradient(135deg, #020817 0%, #0a1a3a 50%, #0f2027 100%);
-  }
+/* For floating particles */
+.floating-particle {
+  will-change: transform, opacity;
+}
 
-  /* Gradient Divider Line */
-  .divider-blue {
-    background: linear-gradient(to bottom, #2563eb, #3b82f6, #06b6d4);
-  }
-
-  /* Gradient Text */
-  .text-gradient-blue {
-    background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  /* Neon Pulse Glow (Blue) */
-  .animate-pulse-blue {
-    animation: pulse-blue 2s ease-in-out infinite alternate;
-  }
-
-  @keyframes pulse-blue {
-    from {
-      box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
-    }
-    to {
-      box-shadow: 0 0 30px rgba(6, 182, 212, 0.8);
-    }
-  }
+/* For animated matrix spans */
+.animated-matrix span {
+  will-change: transform, opacity;
 }
