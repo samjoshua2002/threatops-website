@@ -18,8 +18,7 @@ export function HeroSection() {
 
   return (
   <section className="relative min-h-screen flex items-center justify-center overflow-hidden 
-  bg-[hsl(210,13%,3%)] 
-  before:absolute before:inset-0 before:bg-gradient-to-tr before:from-[hsla(0,84%,60%,0.15)] before:to-[hsla(0,84%,60%,0.05)] before:pointer-events-none">
+  ">
 
   <div className="max-w-7xl mx-auto px-6 lg:px-12 w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center relative z-10">
 
