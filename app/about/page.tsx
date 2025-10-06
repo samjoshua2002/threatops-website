@@ -15,7 +15,7 @@ export default function AboutPage() {
       <TeamSection />
       <CompanyStats />
       <CTASection />
-      <Footer />
+     <Footer />
     </main>
   )
 }
