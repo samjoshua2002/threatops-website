@@ -137,9 +137,9 @@ export default function HomePage() {
       <div ref={servicesRef}>
         <ServicesOverview />
       </div>
-      <div ref={statsRef}>
+      {/* <div ref={statsRef}>
         <StatsSection />
-      </div>
+      </div> */}
       <div ref={ecosystemRef}>
         <EcosystemSection/>
       </div>

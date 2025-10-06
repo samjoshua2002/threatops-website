@@ -8,19 +8,19 @@ function StatBar({ value, text }: { value: number; text: string }) {
 
   return (
     <div ref={ref} className="group">
-      <p className="text-gray-200 mb-2">{text}</p>
-      <div className="w-full bg-white/10 rounded-full h-6 overflow-hidden relative">
+      <p className="text-[var(--muted-foreground)] mb-2">{text}</p>
+      <div className="w-full bg-[var(--background)/10] rounded-full h-6 overflow-hidden relative">
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: inView ? `${value}%` : 0 }}
           transition={{ duration: 1.4, ease: "easeOut" }}
           whileHover={{ width: `${value + 5}%` }}
           className="h-6 rounded-full flex items-center justify-end pr-2
-                     bg-gradient-to-r from-[#FDA172] via-[#fcb785] to-[#FDA172]
+                     bg-gradient-to-r from-[var(--primary)] via-[#FF6B5C] to-[#FFA39B]
                      bg-[length:200%_200%] animate-gradient-x
                      glow-purple group-hover:animate-pulse"
         >
-          <span className="text-sm font-semibold text-white drop-shadow-md">
+          <span className="text-sm font-semibold text-[var(--foreground)] drop-shadow-md">
             {value}%
           </span>
         </motion.div>
@@ -46,20 +46,20 @@ export function ServicesOverview() {
   ]
 
   return (
-    <section className="relative py-24 px-6 lg:px-12 text-white overflow-hidden">
+    <section className="relative py-24 px-6 lg:px-12 text-[var(--foreground)] overflow-hidden bg-[hsl(204,15%,6%)]">
       {/* Background Video */}
       <video
         autoPlay
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0"
+        className="absolute inset-0 w-full h-full object-cover z-0 opacity-40"
       >
         <source src="/videos/v2.mp4" type="video/mp4" />
       </video>
 
-      {/* Orange overlay to differentiate */}
-      <div className="absolute inset-0 bg-orange-950/80 z-0"></div>
+      {/* Subtle red overlay tint */}
+      <div className="absolute inset-0 bg-[var(--primary)/20] z-0"></div>
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-12 items-center">
@@ -68,17 +68,18 @@ export function ServicesOverview() {
         <div>
           <h2 className="text-4xl md:text-5xl font-extrabold leading-tight mb-6">
             Cybersecurity has an{" "}
-            <span className="bg-gradient-to-r from-[#FDA172] via-[#fcb785] to-[#FDA172] bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient-x">
+            <span className="bg-gradient-to-r from-[var(--primary)] via-[#FF6B5C] to-[#FFA39B] 
+                             bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient-x">
               effectiveness crisis.
             </span>
           </h2>
-          <p className="text-lg text-gray-300 mb-4">
+          <p className="text-lg text-[var(--muted-foreground)] mb-4">
             Despite record-high investments, organizations continue to face relentless attacks,
             operational disruptions, and rising risk.
           </p>
-          <p className="text-2xl font-semibold text-[#FDA172] mb-8">
+          <p className="text-2xl font-semibold text-[var(--primary)] mb-8">
             $10.5 Trillion
-            <span className="block text-base font-normal text-gray-400">
+            <span className="block text-base font-normal text-[var(--muted-foreground)]">
               Estimated global cost of cybercrime by 2025
             </span>
           </p>
@@ -89,7 +90,7 @@ export function ServicesOverview() {
           animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
           transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
           className="hidden lg:block w-[2px] h-80 rounded-full 
-                     bg-gradient-to-b from-[#FDA172] via-[#fcb785] to-[#FDA172] 
+                     bg-gradient-to-b from-[var(--primary)] via-[#FF6B5C] to-[#FFA39B]
                      bg-[length:200%_200%]"
         />
 
@@ -103,10 +104,10 @@ export function ServicesOverview() {
 
       {/* Bottom Pitch */}
       <div className="relative z-10 max-w-4xl mx-auto text-center mt-20">
-        <h3 className="text-2xl md:text-3xl font-bold mb-4 text-white">
+        <h3 className="text-2xl md:text-3xl font-bold mb-4 text-[var(--foreground)]">
           At ThreatOps, we close the gap.
         </h3>
-        <p className="text-lg text-gray-300 mb-6">
+        <p className="text-lg text-[var(--muted-foreground)] mb-6">
           We help transform your security posture from reactive to resilient— 
           arming your business to face the threats of today and tomorrow.
         </p>

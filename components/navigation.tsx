@@ -37,7 +37,7 @@ export function Navigation() {
         <div className="flex justify-between items-center h-16 ">
           {/* Brand Name (No Logo) */}
           <Link href="/" className="flex items-center space-x-2">
-            <span className="text-xl font-bold" style={{ color: "#FDA172" }}>
+            <span className="text-xl font-bold" style={{ color: "var(--primary)" }}>
               SafeGrey
             </span>
           </Link>
@@ -48,12 +48,18 @@ export function Navigation() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-gray-400 hover:text-[#FDA172] transition-colors duration-200"
+                className="transition-colors duration-200"
+                style={{ color: "var(--muted-foreground)" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--primary)")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted-foreground)")}
               >
                 {item.label}
               </Link>
             ))}
-            <Button className="glow-accent" style={{ backgroundColor: "#FDA172", color: "white" }}>
+            <Button
+              className="glow-accent"
+              style={{ backgroundColor: "var(--primary)", color: "var(--foreground)" }}
+            >
               Get Started
             </Button>
           </div>
@@ -74,14 +80,20 @@ export function Navigation() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="block px-3 py-2 text-gray-400 hover:text-[#FDA172] transition-colors duration-200"
+                  className="block px-3 py-2 transition-colors duration-200"
+                  style={{ color: "var(--muted-foreground)" }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--primary)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted-foreground)")}
                   onClick={() => setIsOpen(false)}
                 >
                   {item.label}
                 </Link>
               ))}
               <div className="px-3 py-2">
-                <Button className="w-full glow-accent" style={{ backgroundColor: "#FDA172", color: "white" }}>
+                <Button
+                  className="w-full glow-accent"
+                  style={{ backgroundColor: "var(--primary)", color: "var(--foreground)" }}
+                >
                   Get Started
                 </Button>
               </div>
