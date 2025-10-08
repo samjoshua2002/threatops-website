@@ -16,9 +16,9 @@ function StatBar({ value, text }: { value: number; text: string }) {
           transition={{ duration: 1.4, ease: "easeOut" }}
           whileHover={{ width: `${value + 5}%` }}
           className="h-6 rounded-full flex items-center justify-end pr-2
-                     bg-gradient-to-r from-[var(--primary)] via-[#FF6B5C] to-[#FFA39B]
+                     bg-gradient-to-r from-[var(--primary)] via-[#c43b2b] to-[#ff7363]
                      bg-[length:200%_200%] animate-gradient-x
-                     glow-purple group-hover:animate-pulse"
+                     glow-accent group-hover:animate-pulse"
         >
           <span className="text-sm font-semibold text-[var(--foreground)] drop-shadow-md">
             {value}%
@@ -46,20 +46,9 @@ export function ServicesOverview() {
   ]
 
   return (
-    <section className="relative py-24 px-6 lg:px-12 text-[var(--foreground)] overflow-hidden bg-[hsl(204,15%,6%)]">
-      {/* Background Video */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0 opacity-40"
-      >
-        <source src="/videos/v2.mp4" type="video/mp4" />
-      </video>
-
-      {/* Subtle red overlay tint */}
-      <div className="absolute inset-0 bg-[var(--primary)/20] z-0"></div>
+    <section className="relative py-24 px-6 lg:px-12 text-[var(--foreground)] overflow-hidden bg-[var(--background)]">
+      {/* Subtle overlay gradient from base theme */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[var(--background)] via-[#1a1a1a] to-[var(--background)] opacity-90"></div>
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-12 items-center">
@@ -68,7 +57,7 @@ export function ServicesOverview() {
         <div>
           <h2 className="text-4xl md:text-5xl font-extrabold leading-tight mb-6">
             Cybersecurity has an{" "}
-            <span className="bg-gradient-to-r from-[var(--primary)] via-[#FF6B5C] to-[#FFA39B] 
+            <span className="bg-gradient-to-r from-[var(--primary)] via-[#c43b2b] to-[#ff7363] 
                              bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient-x">
               effectiveness crisis.
             </span>
@@ -90,7 +79,7 @@ export function ServicesOverview() {
           animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
           transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
           className="hidden lg:block w-[2px] h-80 rounded-full 
-                     bg-gradient-to-b from-[var(--primary)] via-[#FF6B5C] to-[#FFA39B]
+                     bg-gradient-to-b from-[var(--primary)] via-[#c43b2b] to-[#ff7363]
                      bg-[length:200%_200%]"
         />
 
