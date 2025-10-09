@@ -7,15 +7,31 @@ import { SecurityAssessment } from "@/components/Security-Assessment"
 
 import { Footer } from "@/components/footer"
 import { SecurityPostureAssessment } from "@/components/ Security-Posture-Assessment"
+import { CloudSecurityAssessment } from "@/components/cloudsecurityAssessment"
+import { ManagedSecurityServices } from "@/components/ManagedSecurityService"
 
 export default function ServicesPage() {
   const securityAssessmentRef = useRef<HTMLDivElement>(null)
   const postureAssessmentRef = useRef<HTMLDivElement>(null)
-
+  const CloudAssessmentRef = useRef<HTMLDivElement>(null)
+  const ManangeSecurityRef = useRef<HTMLDivElement>(null)
+  
   const handleServiceSelect = (serviceId: string) => {
     switch (serviceId) {
       case "security-assessment":
         securityAssessmentRef.current?.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        })
+        break
+         case "cloud-security":
+        CloudAssessmentRef.current?.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        })
+        break
+        case "manage-security":
+        ManangeSecurityRef.current?.scrollIntoView({ 
           behavior: 'smooth',
           block: 'start'
         })
@@ -42,6 +58,12 @@ export default function ServicesPage() {
       
       <div ref={postureAssessmentRef}>
        <SecurityPostureAssessment/>
+      </div>
+       <div ref={CloudAssessmentRef}>
+       <CloudSecurityAssessment/>
+      </div>
+      <div ref={ManangeSecurityRef}>
+       <ManagedSecurityServices/>
       </div>
       
       <Footer />

@@ -20,27 +20,30 @@ export function ServicesHero({ onServiceSelect }: ServicesHeroProps) {
     {
       id: "security-assessment",
       title: "Security Assessments",
-      description: "Comprehensive technical security testing for applications and infrastructure to identify vulnerabilities and security flaws.",
+     
       icon: Shield,
-      features: [
-        "Web Application Security Testing",
-        "Mobile Application Security Assessment", 
-        "API Security Testing",
-        "Network Infrastructure Assessment",
-        "Active Directory Security Review"
-      ]
+      
     },
     {
       id: "posture-assessment",
       title: "Security Posture",
-      description: "Advanced security testing methodologies to evaluate organizational resilience against real-world threats and attacks.",
+     
       icon: Target,
-      features: [
-        "Phishing Awareness Campaigns",
-        "Mystery Guest Physical Testing",
-        "Assumed Breach Simulation",
-        "Traditional Red Team Exercises"
-      ]
+      
+    },
+    {
+      id: "cloud-security",
+      title: "Cloud Security",
+     
+      icon: Target,
+      
+    },
+    {
+      id: "manage-security",
+      title: "Managed Security",
+     
+      icon: Target,
+      
     }
   ]
 
@@ -75,7 +78,7 @@ export function ServicesHero({ onServiceSelect }: ServicesHeroProps) {
           {/* Services Navigation Tabs */}
           <div className="w-full items-center mb-12">
             <Tabs defaultValue="security-assessment" className="w-full items-center">
-              <TabsList className="grid grid-cols-2 gap-3 p-2 bg-card/50 backdrop-blur-sm rounded-2xl h-auto border border-border/50 shadow-xl mb-12">
+              <TabsList className="grid grid-cols-4 gap-3 p-2 bg-card/50 backdrop-blur-sm rounded-2xl h-auto border border-border/50 shadow-xl mb-12">
                 {services.map((service) => {
                   const Icon = service.icon
                   return (
