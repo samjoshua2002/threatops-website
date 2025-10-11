@@ -20,22 +20,24 @@ export function HeroSection() {
   <section className="relative min-h-screen flex items-center justify-center overflow-hidden 
   ">
 
-  <div className="max-w-7xl mx-auto px-6 lg:px-12 w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center relative z-10">
+  <div className="max-w-7xl mx-auto px-6 lg:px-12 w-full grid grid-cols-1 md:grid-cols-2 gap-5 items-center relative z-10">
 
     {/* Left Side - Text */}
     <div className={`relative z-10 max-w-xl text-left transition-all duration-1000 ${
       mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
     }`}>
-      <h1 className="text-3xl pt-[100px] sm:pt-[100px] md:pt-[70px] lg:pt-[90px] sm:text-4xl md:text-6xl font-bold mb-6 leading-tight text-foreground">
+      <h1 className="text-3xl pt-[80px] sm:pt-[100px] md:pt-[70px] lg:pt-[50px] sm:text-4xl md:text-6xl font-bold mb-6 leading-tight text-foreground">
         <span style={{ color: "var(--primary)" }}>Find the breach point</span>{" "}
-        <span style={{ color: "var(--foreground)" }}>before compromise finds you.</span>
+        <span style={{ color: "var(--foreground)" }}>before They Do.</span>
       </h1>
 
       <p className="text-lg sm:text-xl md:text-2xl mb-8 leading-relaxed text-muted-foreground">
-        Real-world attack simulations and end-to-end cybersecurity—proactively protecting your digital assets from emerging threats.
-      </p>
+        Real-world attack simulations and end-to-end cybersecurity — proactively protecting your digital assets from emerging threats
 
-      <div className="flex flex-col sm:flex-row gap-4">
+      </p>
+<p className="text-2xl ">Prevent Breaches ! with our professional Hacking Team.</p>
+
+      {/* <div className="flex flex-col sm:flex-row gap-4">
         <Button
           size="lg"
           className="glow-accent animate-pulse-glow group"
@@ -54,7 +56,7 @@ export function HeroSection() {
             View Our Services
           </Button>
         </Link>
-      </div>
+      </div> */}
     </div>
 
     {/* Right Side - Ripple Background */}

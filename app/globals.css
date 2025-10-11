@@ -149,6 +149,11 @@ body {
     min-height: 100vh;
   }
 }
+@layer base {
+  * {
+    font-family: var(--font-satoshi), sans-serif;
+  }
+}
 
 @layer utilities {
   .glass-effect {
@@ -160,6 +165,8 @@ body {
   .glass-effect:hover {
     color: #ffffff;
   }
+
+ 
 
   .glass-effect-strong {
     background: rgba(255, 255, 255, 0.08);
