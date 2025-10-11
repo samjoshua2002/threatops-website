@@ -6,6 +6,7 @@ import { ServicesOverview } from "@/components/services-overview"
 import { StatsSection } from "@/components/stats-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { CTASection } from "@/components/cta-section"
+import { ServicesSection } from "@/components/ui/services-section"
 import { Footer } from "@/components/footer"
 import EcosystemSection from "@/components/ui/ecosystem-section"
 import { useEffect, useRef } from "react"
@@ -24,6 +25,7 @@ export default function HomePage() {
   const ecosystemRef = useRef(null)
   const testimonialsRef = useRef(null)
   const ctaRef = useRef(null)
+  const servicesSectionRef = useRef(null)
 
   useEffect(() => {
     // Hero section animation
@@ -146,9 +148,13 @@ export default function HomePage() {
       <div ref={testimonialsRef}>
         <TestimonialsSection />
       </div>
-      <div ref={ctaRef}>
+      {/* <div ref={ctaRef}>
         <CTASection />
-      </div>
+      </div> */}
+      <div ref={servicesSectionRef}>
+  <ServicesSection />
+</div>
+
       <Footer />
     </main>
   )

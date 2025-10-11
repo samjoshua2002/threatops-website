@@ -3,8 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ChevronDown, Menu, X } from "lucide-react";
-import { ArrowRight } from "lucide-react";
+import { ChevronDown, Menu, X, Shield, Users, FolderGit2, ArrowRight } from "lucide-react";
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,6 +31,60 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", closeDropdown);
   }, [activeDropdown]);
 
+  const whatWeDoSections = [
+    {
+      title: "Security Assessment",
+      links: [
+        "Web Application Assessment",
+        "Mobile Application Assessment",
+        "API Security Assessment",
+        "Network Assessment",
+        "Active Directory Assessment"
+      ]
+    },
+    {
+      title: "Security Posture Assessment",
+      links: [
+        "Phishing Campaign",
+        "Mystery Guest (Physical security)",
+        "Assumed Breach",
+        "Traditional RedTeam"
+      ]
+    },
+    {
+      title: "Cloud Security",
+      links: [
+        "Container Security Assessment",
+        "Kubernetes Security Assessment",
+        "Cloud Infrastructure Security Assessment"
+      ]
+    },
+    {
+      title: "Managed Security Services",
+      links: [
+        "SIEM Monitoring & Threat Detection",
+        "Vulnerability Management",
+        "Purple Team"
+      ]
+    },
+    {
+      title: "Risk Management",
+      links: [
+        "ISO 27001 Consulting",
+        "HIPAA Compliance",
+        "GDPR Consulting",
+        "SOC 1 / SOC 2 Readiness"
+      ]
+    },
+    {
+      title: "Subscriptions",
+      links: [
+        "Security Subscriptions",
+        "CryptX"
+      ]
+    }
+  ];
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[var(--background)] shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -41,69 +94,91 @@ export function Navigation() {
             <span className="text-2xl font-bold text-[var(--primary)]">SafeGrey</span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8 text-[var(--foreground)] font-medium">
+          {/* Desktop Navigation - Centered */}
+          <div className="hidden md:flex items-center space-x-12 text-[var(--foreground)] font-medium absolute left-1/2 transform -translate-x-1/2">
             {/* What We Do */}
             <div
               className="relative"
               onMouseEnter={() => handleDropdownEnter("whatwedo")}
               onMouseLeave={handleDropdownLeave}
             >
-              <button className="flex items-center hover:text-[var(--primary)] transition-colors">
+              <button className="flex items-center hover:text-[var(--primary)] transition-colors gap-1">
+                <Shield className="h-4 w-4" />
                 What We Do <ChevronDown className="ml-1 h-4 w-4" />
               </button>
 
               {activeDropdown === "whatwedo" && (
-                <div className="absolute left-0 mt-3 bg-[var(--background)] border border-[var(--primary)]/20 rounded-xl p-4 grid grid-cols-2 gap-4 w-[90vw] max-w-[500px] shadow-lg pointer-events-auto">
+                <div className="absolute left-1/2 transform -translate-x-1/2 mt-3 bg-[var(--background)] border border-[var(--primary)]/20 rounded-xl p-6 grid grid-cols-3 gap-6 w-[80vw] max-w-[900px] shadow-lg pointer-events-auto">
                   {/* Pointer gap area fix */}
-                  <div className="absolute -top-2 left-8 w-4 h-4 bg-[var(--background)] border-l border-t border-[var(--primary)]/20 rotate-45"></div>
+                  <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-[var(--background)] border-l border-t border-[var(--primary)]/20 rotate-45"></div>
 
-                  <div>
-                    <h4 className="text-[var(--primary)] font-semibold mb-2">Security Assessment</h4>
-                    <ul className="space-y-1 text-[var(--muted-foreground)]">
-                      <li><Link href="#">Web Application Assessment</Link></li>
-                      <li><Link href="#">Mobile Application Assessment</Link></li>
-                      <li><Link href="#">API Security Assessment</Link></li>
-                      <li><Link href="#">Network Assessment</Link></li>
-                      <li><Link href="#">Active Directory Assessment</Link></li>
-                    </ul>
-
-                    <h4 className="text-[var(--primary)] font-semibold mt-3 mb-2">Security Posture Assessment</h4>
-                    <ul className="space-y-1 text-[var(--muted-foreground)]">
-                      <li><Link href="#">Phishing Campaign</Link></li>
-                      <li><Link href="#">Mystery Guest</Link></li>
-                      <li><Link href="#">Assumed Breach</Link></li>
-                      <li><Link href="#">Traditional Red Team</Link></li>
-                    </ul>
+                  {/* Column 1 */}
+                  <div className="space-y-6">
+                    {whatWeDoSections.slice(0, 2).map((section, index) => (
+                      <div key={index}>
+                        <h4 className="text-[var(--primary)] font-semibold mb-3 text-sm uppercase tracking-wide">
+                          {section.title}
+                        </h4>
+                        <ul className="space-y-2 text-[var(--muted-foreground)]">
+                          {section.links.map((link, linkIndex) => (
+                            <li key={linkIndex}>
+                              <Link 
+                                href="#" 
+                                className="text-sm hover:text-[var(--primary)] transition-colors block py-1"
+                              >
+                                {link}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
                   </div>
 
-                  <div>
-                    <h4 className="text-[var(--primary)] font-semibold mb-2">Cloud Security</h4>
-                    <ul className="space-y-1 text-[var(--muted-foreground)]">
-                      <li><Link href="#">Container Security</Link></li>
-                      <li><Link href="#">Kubernetes Security</Link></li>
-                      <li><Link href="#">Cloud Infrastructure</Link></li>
-                    </ul>
+                  {/* Column 2 */}
+                  <div className="space-y-6">
+                    {whatWeDoSections.slice(2, 4).map((section, index) => (
+                      <div key={index}>
+                        <h4 className="text-[var(--primary)] font-semibold mb-3 text-sm uppercase tracking-wide">
+                          {section.title}
+                        </h4>
+                        <ul className="space-y-2 text-[var(--muted-foreground)]">
+                          {section.links.map((link, linkIndex) => (
+                            <li key={linkIndex}>
+                              <Link 
+                                href="#" 
+                                className="text-sm hover:text-[var(--primary)] transition-colors block py-1"
+                              >
+                                {link}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
 
-                    <h4 className="text-[var(--primary)] font-semibold mt-3 mb-2">Managed Security</h4>
-                    <ul className="space-y-1 text-[var(--muted-foreground)]">
-                      <li><Link href="#">SIEM</Link></li>
-                      <li><Link href="#">Vulnerability Management</Link></li>
-                      <li><Link href="#">Purple Team</Link></li>
-                    </ul>
-
-                    <h4 className="text-[var(--primary)] font-semibold mt-3 mb-2">Risk Management</h4>
-                    <ul className="space-y-1 text-[var(--muted-foreground)]">
-                      <li><Link href="#">ISO 27001 Consulting</Link></li>
-                      <li><Link href="#">HIPPA</Link></li>
-                      <li><Link href="#">GDPR</Link></li>
-                    </ul>
-
-                    <h4 className="text-[var(--primary)] font-semibold mt-3 mb-2">Subscriptions</h4>
-                    <ul className="space-y-1 text-[var(--muted-foreground)]">
-                      <li><Link href="#">Security Subscriptions</Link></li>
-                      <li><Link href="#">CryptX</Link></li>
-                    </ul>
+                  {/* Column 3 */}
+                  <div className="space-y-6">
+                    {whatWeDoSections.slice(4, 6).map((section, index) => (
+                      <div key={index}>
+                        <h4 className="text-[var(--primary)] font-semibold mb-3 text-sm uppercase tracking-wide">
+                          {section.title}
+                        </h4>
+                        <ul className="space-y-2 text-[var(--muted-foreground)]">
+                          {section.links.map((link, linkIndex) => (
+                            <li key={linkIndex}>
+                              <Link 
+                                href="#" 
+                                className="text-sm hover:text-[var(--primary)] transition-colors block py-1"
+                              >
+                                {link}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
                   </div>
                 </div>
               )}
@@ -115,17 +190,18 @@ export function Navigation() {
               onMouseEnter={() => handleDropdownEnter("whoweare")}
               onMouseLeave={handleDropdownLeave}
             >
-              <button className="flex items-center hover:text-[var(--primary)] transition-colors">
+              <button className="flex items-center hover:text-[var(--primary)] transition-colors gap-1">
+                <Users className="h-4 w-4" />
                 Who We Are <ChevronDown className="ml-1 h-4 w-4" />
               </button>
 
               {activeDropdown === "whoweare" && (
-                <div className="absolute left-0 mt-3 bg-[var(--background)] border border-[var(--primary)]/20 rounded-xl p-4 shadow-lg w-48">
-                  <div className="absolute -top-2 left-6 w-4 h-4 bg-[var(--background)] border-l border-t border-[var(--primary)]/20 rotate-45"></div>
+                <div className="absolute left-1/2 transform -translate-x-1/2 mt-3 bg-[var(--background)] border border-[var(--primary)]/20 rounded-xl p-4 shadow-lg w-48">
+                  <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-[var(--background)] border-l border-t border-[var(--primary)]/20 rotate-45"></div>
                   <ul className="space-y-2 text-[var(--muted-foreground)]">
-                    <li><Link href="/about">About</Link></li>
-                    <li><Link href="/partners">Partners</Link></li>
-                    <li><Link href="/contact">Contact</Link></li>
+                    <li><Link href="/about" className="block py-1 hover:text-[var(--primary)] transition-colors">About</Link></li>
+                    <li><Link href="/partners" className="block py-1 hover:text-[var(--primary)] transition-colors">Partners</Link></li>
+                    <li><Link href="/contact" className="block py-1 hover:text-[var(--primary)] transition-colors">Contact</Link></li>
                   </ul>
                 </div>
               )}
@@ -137,23 +213,27 @@ export function Navigation() {
               onMouseEnter={() => handleDropdownEnter("resources")}
               onMouseLeave={handleDropdownLeave}
             >
-              <button className="flex items-center hover:text-[var(--primary)] transition-colors">
+              <button className="flex items-center hover:text-[var(--primary)] transition-colors gap-1">
+                <FolderGit2 className="h-4 w-4" />
                 Resources <ChevronDown className="ml-1 h-4 w-4" />
               </button>
 
               {activeDropdown === "resources" && (
-                <div className="absolute left-0 mt-3 bg-[var(--background)] border border-[var(--primary)]/20 rounded-xl p-4 shadow-lg w-48">
-                  <div className="absolute -top-2 left-6 w-4 h-4 bg-[var(--background)] border-l border-t border-[var(--primary)]/20 rotate-45"></div>
+                <div className="absolute left-1/2 transform -translate-x-1/2 mt-3 bg-[var(--background)] border border-[var(--primary)]/20 rounded-xl p-4 shadow-lg w-48">
+                  <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-[var(--background)] border-l border-t border-[var(--primary)]/20 rotate-45"></div>
                   <ul className="space-y-2 text-[var(--muted-foreground)]">
-                    <li><Link href="/tools">Tools</Link></li>
-                    <li><a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                    <li><Link href="/tools" className="block py-1 hover:text-[var(--primary)] transition-colors">Tools</Link></li>
+                    <li><a href="https://github.com/" target="_blank" rel="noopener noreferrer" className="block py-1 hover:text-[var(--primary)] transition-colors">GitHub</a></li>
                   </ul>
                 </div>
               )}
             </div>
+          </div>
 
+          {/* CTA Button */}
+          <div className="hidden md:flex">
             <Button
-              className="ml-4 flex items-center gap-2"
+              className="flex items-center gap-2"
               style={{
                 backgroundColor: "var(--primary)",
                 color: "var(--foreground)",
@@ -180,7 +260,10 @@ export function Navigation() {
                 onClick={() => handleAccordion("whatwedo")}
                 className="w-full flex justify-between items-center px-4 py-2 text-[var(--primary)] font-semibold"
               >
-                What We Do
+                <div className="flex items-center gap-2">
+                  <Shield className="h-4 w-4" />
+                  What We Do
+                </div>
                 <ChevronDown
                   className={`h-5 w-5 transition-transform ${
                     activeAccordion === "whatwedo" ? "rotate-180" : ""
@@ -189,45 +272,14 @@ export function Navigation() {
               </button>
 
               {activeAccordion === "whatwedo" && (
-                <div className="px-6 space-y-3">
-                  {[
-                    {
-                      title: "Security Assessment",
-                      links: [
-                        "Web Application Assessment",
-                        "Mobile Application Assessment",
-                        "API Security Assessment",
-                        "Network Assessment",
-                        "Active Directory Assessment",
-                      ],
-                    },
-                    {
-                      title: "Security Posture Assessment",
-                      links: ["Phishing Campaign", "Mystery Guest", "Assumed Breach", "Traditional Red Team"],
-                    },
-                    {
-                      title: "Cloud Security",
-                      links: ["Container Security", "Kubernetes Security", "Cloud Infrastructure"],
-                    },
-                    {
-                      title: "Managed Security",
-                      links: ["SIEM", "Vulnerability Management", "Purple Team"],
-                    },
-                    {
-                      title: "Risk Management",
-                      links: ["ISO 27001 Consulting", "HIPPA", "GDPR"],
-                    },
-                    {
-                      title: "Subscriptions",
-                      links: ["Security Subscriptions", "CryptX"],
-                    },
-                  ].map((section, i) => (
+                <div className="px-6 space-y-4">
+                  {whatWeDoSections.map((section, i) => (
                     <div key={i}>
-                      <h5 className="text-[var(--primary)] font-medium">{section.title}</h5>
+                      <h5 className="text-[var(--primary)] font-medium mb-2">{section.title}</h5>
                       <ul className="text-[var(--muted-foreground)] space-y-1 pl-3">
                         {section.links.map((link, j) => (
                           <li key={j}>
-                            <Link href="#">{link}</Link>
+                            <Link href="#" className="block py-1">{link}</Link>
                           </li>
                         ))}
                       </ul>
@@ -243,7 +295,10 @@ export function Navigation() {
                 onClick={() => handleAccordion("whoweare")}
                 className="w-full flex justify-between items-center px-4 py-2 text-[var(--primary)] font-semibold"
               >
-                Who We Are
+                <div className="flex items-center gap-2">
+                  <Users className="h-4 w-4" />
+                  Who We Are
+                </div>
                 <ChevronDown
                   className={`h-5 w-5 transition-transform ${
                     activeAccordion === "whoweare" ? "rotate-180" : ""
@@ -252,10 +307,10 @@ export function Navigation() {
               </button>
 
               {activeAccordion === "whoweare" && (
-                <ul className="px-6 text-[var(--muted-foreground)] space-y-1">
-                  <li><Link href="/about">About</Link></li>
-                  <li><Link href="/partners">Partners</Link></li>
-                  <li><Link href="/contact">Contact</Link></li>
+                <ul className="px-6 text-[var(--muted-foreground)] space-y-2">
+                  <li><Link href="/about" className="block py-1">About</Link></li>
+                  <li><Link href="/partners" className="block py-1">Partners</Link></li>
+                  <li><Link href="/contact" className="block py-1">Contact</Link></li>
                 </ul>
               )}
             </div>
@@ -266,7 +321,10 @@ export function Navigation() {
                 onClick={() => handleAccordion("resources")}
                 className="w-full flex justify-between items-center px-4 py-2 text-[var(--primary)] font-semibold"
               >
-                Resources
+                <div className="flex items-center gap-2">
+                  <FolderGit2 className="h-4 w-4" />
+                  Resources
+                </div>
                 <ChevronDown
                   className={`h-5 w-5 transition-transform ${
                     activeAccordion === "resources" ? "rotate-180" : ""
@@ -275,9 +333,9 @@ export function Navigation() {
               </button>
 
               {activeAccordion === "resources" && (
-                <ul className="px-6 text-[var(--muted-foreground)] space-y-1">
-                  <li><Link href="/tools">Tools</Link></li>
-                  <li><a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                <ul className="px-6 text-[var(--muted-foreground)] space-y-2">
+                  <li><Link href="/tools" className="block py-1">Tools</Link></li>
+                  <li><a href="https://github.com/" target="_blank" rel="noopener noreferrer" className="block py-1">GitHub</a></li>
                 </ul>
               )}
             </div>
@@ -290,7 +348,7 @@ export function Navigation() {
                   color: "var(--foreground)",
                 }}
               >
-               <ArrowRight size={16} /> Got hacked ? 
+               <ArrowRight size={16} /> Got hacked?
               </Button>
             </div>
           </div>

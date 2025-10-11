@@ -33,15 +33,15 @@ export function ServicesOverview() {
   const stats = [
     {
       value: 72,
-      text: "of security leaders report their organization suffered at least one major cyber attack in the past year.",
+      text: "72% of security leaders report their organization suffered at least one major cyber attack in the past year.",
     },
     {
       value: 62,
-      text: "say that significant cyber attacks led to months-long productivity loss and business impact.",
+      text: "62% say that significant cyber attacks led to months-long productivity loss and business impact.",
     },
     {
       value: 25,
-      text: "of organizations are confident they can defend against advanced threats before damage is done.",
+      text: "25% of organizations are confident they can defend against advanced threats before damage is done.",
     },
   ]
 
@@ -94,7 +94,7 @@ export function ServicesOverview() {
       {/* Bottom Pitch */}
       <div className="relative z-10 max-w-4xl mx-auto text-center mt-20">
         <h3 className="text-2xl md:text-3xl font-bold mb-4 text-[var(--foreground)]">
-          At ThreatOps, we close the gap.
+          At SafeGrey, we close the gap.
         </h3>
         <p className="text-lg text-[var(--muted-foreground)] mb-6">
           We help transform your security posture from reactive to resilient— 
