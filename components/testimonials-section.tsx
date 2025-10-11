@@ -83,7 +83,7 @@ export function TestimonialsSection() {
                           transition={{ duration: 0.8 }}
                         >
                           <Icon
-                            className="w-6 h-6 mt-1 " // Apply same gradient as title
+                            className="w-6 h-6" // Apply same gradient as title
                             strokeWidth={2}
                           />
                         </motion.h2>
