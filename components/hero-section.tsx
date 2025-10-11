@@ -35,9 +35,9 @@ export function HeroSection() {
         Real-world attack simulations and end-to-end cybersecurity — proactively protecting your digital assets from emerging threats
 
       </p>
-<p className="text-2xl ">Prevent Breaches ! with our professional Hacking Team.</p>
 
-      {/* <div className="flex flex-col sm:flex-row gap-4">
+
+      <div className="flex flex-col sm:flex-row gap-4">
         <Button
           size="lg"
           className="glow-accent animate-pulse-glow group"
@@ -56,7 +56,8 @@ export function HeroSection() {
             View Our Services
           </Button>
         </Link>
-      </div> */}
+      </div>
+      {/* <p className="text-2xl ">Prevent Breaches ! with our professional Hacking Team.</p> */}
     </div>
 
     {/* Right Side - Ripple Background */}
