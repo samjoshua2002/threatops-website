@@ -101,7 +101,7 @@ export function TestimonialsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          Why Choose Us
+          Why Choosing Us
         </motion.h2>
 
         {/* Top Row - 3 Cards */}
