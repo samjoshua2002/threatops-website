@@ -1,7 +1,12 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import type React from "react"
+import type { LucideIcon } from "lucide-react"
+
+import { ShieldCheck, Cog, Target, Cloud, FileCheck, Repeat } from "lucide-react"
+
+import { useMemo, useRef, useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 
 const services = [
   {
@@ -145,94 +150,164 @@ const services = [
       },
     ],
   },
-];
+]
+
+const serviceIcons: Record<string, LucideIcon> = {
+  "security-assessments": ShieldCheck,
+  "managed-security": Cog,
+  "security-posture": Target,
+  "cloud-security": Cloud,
+  "risk-compliance": FileCheck,
+  "security-subscriptions": Repeat,
+}
 
 export function ServicesSection() {
-  const [activeService, setActiveService] = useState(services[0].key);
-  const [hoveredService, setHoveredService] = useState<string | null>(null);
+  const [activeService, setActiveService] = useState(services[0].key)
+  const [hoveredService, setHoveredService] = useState<string | null>(null)
 
-  const currentService =
-    services.find((s) => s.key === (hoveredService || activeService)) ||
-    services[0];
+  const activeIndex = useMemo(
+    () =>
+      Math.max(
+        0,
+        services.findIndex((s) => s.key === activeService),
+      ),
+    [activeService],
+  )
+
+  const currentService = services.find((s) => s.key === (hoveredService || activeService)) || services[0]
+
+  const itemRefs = useRef<Array<HTMLButtonElement | null>>([])
+  const focusItem = (index: number) => {
+    const el = itemRefs.current[index]
+    if (el) el.focus()
+  }
+
+  const onKeyDownTabs = (e: React.KeyboardEvent) => {
+    if (e.key !== "ArrowDown" && e.key !== "ArrowUp") return
+    e.preventDefault()
+    const dir = e.key === "ArrowDown" ? 1 : -1
+    const next = (activeIndex + dir + services.length) % services.length
+    setActiveService(services[next].key)
+    requestAnimationFrame(() => focusItem(next))
+  }
+
+  const listVariants = {
+    initial: { opacity: 0, x: 16 },
+    enter: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.25, when: "beforeChildren", staggerChildren: 0.05 },
+    },
+    exit: { opacity: 0, x: -16, transition: { duration: 0.2 } },
+  }
+
+  const cardVariants = {
+    initial: { opacity: 0, y: 8 },
+    enter: { opacity: 1, y: 0, transition: { duration: 0.2 } },
+  }
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-16 flex flex-col lg:flex-row gap-10 relative">
-      {/* Left Nav with vertical path */}
-<div className="flex flex-col items-start w-full lg:w-1/3 relative ">
-  {/* Vertical line with running gradient */}
-  <div className="absolute left-6 top-0 bottom-0 w-1 bg-gradient-to-b from-[#ae2012] via-[#ae2012]/80 to-[#ae2012] animate-pulse">
-    {/* Animated gradient wave */}
-    <div className="absolute inset-0 bg-gradient-to-b from-[#ae2012] via-[#ae2012]/60 to-[#ae2012] opacity-80 animate-gradient-wave "></div>
-  </div>
+    <section
+      aria-labelledby="services-heading"
+      className="max-w-6xl mx-auto px-4 py-16 flex flex-col lg:flex-row gap-10 relative"
+    >
+      <h2 id="services-heading" className="sr-only text-white">
+        Our Services
+      </h2>
 
-  {/* Service items with dots */}
-  {services.map((service, idx) => {
-    const isActive = activeService === service.key;
-    const isHover = hoveredService === service.key;
-
-    return (
-      <div
-        key={service.key}
-        className="relative flex items-center mb-16 cursor-pointer z-10 w-full"
-        onMouseEnter={() => setHoveredService(service.key)}
-        onMouseLeave={() => setHoveredService(null)}
-        onClick={() => setActiveService(service.key)}
-      >
-        {/* Dot - Perfectly centered and stable */}
+      {/* Left Nav with vertical timeline */}
+      <div className="flex flex-col items-start w-full lg:w-1/3 relative">
+        {/* Decorative vertical line - uses brand tokens and subtle glow */}
         <div
-          className={`absolute w-8 h-8 rounded-full z-10 transition-all duration-300 border-4 ${
-            isActive || isHover
-              ? "bg-[#ae2012] border-[#ae2012] shadow-lg shadow-[#ae2012]/50"
-              : "bg-background border-(rgba(255, 255, 255, 0.15))"
-          }`}
-          style={{
-            top: "50%",
-            left: "26px",
-            transform: "translate(-50%, -50%)",
-          }}
-        ></div>
+          aria-hidden="true"
+          className="pointer-events-none absolute left-9 top-0 bottom-0 border-l border-dashed border-border"
+        />
 
-        {/* Label */}
-        <span
-          className={`ml-24 text-left text-lg font-semibold transition-colors duration-300 ${
-            isActive ? "text-[#ae2012]" : "text-foreground"
-          }`}
-        >
-          {service.title}
-        </span>
+        <div role="tablist" aria-orientation="vertical" onKeyDown={onKeyDownTabs} className="w-full pt-1 pl-6">
+          {services.map((service, idx) => {
+            const isActive = activeService === service.key
+            const isHover = hoveredService === service.key
+            const Icon = serviceIcons[service.key] ?? ShieldCheck
+
+            return (
+              <div key={service.key} className="relative w-full">
+                {/* connector spacing */}
+                <div className={idx === services.length - 1 ? "mb-2" : "mb-6"} />
+
+                <button
+                  ref={(el) => (itemRefs.current[idx] = el)}
+                  role="tab"
+                  aria-selected={isActive}
+                  aria-controls={`panel-${service.key}`}
+                  id={`tab-${service.key}`}
+                  onMouseEnter={() => setHoveredService(service.key)}
+                  onMouseLeave={() => setHoveredService(null)}
+                  onClick={() => setActiveService(service.key)}
+                  className="relative flex items-center gap-3 w-full cursor-pointer focus:outline-none py-2"
+                >
+                  {/* Dot */}
+                  <span
+                    className={`inline-flex items-center justify-center size-6 md:size-7 rounded-md ring-1 transition-colors  ${
+                      isActive || isHover
+                        ? "bg-primary/10 text-primary ring-primary"
+                        : "bg-muted text-foreground/70 ring-border"
+                    }`}
+                  >
+                    <Icon className="size-3.5 md:size-4" aria-hidden="true" />
+                  </span>
+
+                  {/* Label */}
+                  <span
+                    className={`text-left text-base md:text-lg font-semibold text-pretty transition-colors duration-300 ${
+                      isActive ? "text-primary" : "text-foreground"
+                    }`}
+                  >
+                    {service.title}
+                  </span>
+
+                  
+                </button>
+              </div>
+            )
+          })}
+        </div>
       </div>
-    );
-  })}
-</div>
-
 
       {/* Right Content */}
       <div className="w-full lg:w-2/3">
+        {/* Current service heading for context */}
+        <div className="mb-4">
+          <h3 className="text-xl md:text-2xl font-bold text-balance text-foreground">{currentService.title}</h3>
+          <div className="mt-2 h-1 w-16 bg-primary rounded" aria-hidden="true" />
+        </div>
+
         <AnimatePresence mode="wait">
           {currentService && (
             <motion.div
               key={currentService.key}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.3 }}
-              className="space-y-6"
+              variants={listVariants}
+              initial="initial"
+              animate="enter"
+              exit="exit"
+              className="space-y-4"
+              role="tabpanel"
+              id={`panel-${currentService.key}`}
+              aria-labelledby={`tab-${currentService.key}`}
             >
               {currentService.sections.map((section, idx) => (
-                <div
-                  key={idx}
-                  className="p-6 bg-card rounded-xl shadow-md border border-border glass-effect transition-all duration-300"
+                <motion.div
+                  variants={cardVariants}
+                  key={`${currentService.key}-${idx}`}
+                  className="p-5 md:p-6 bg-card rounded-xl border border-border shadow-sm transition-all duration-200 hover:border-primary/40 hover:shadow-md hover:-translate-y-0.5"
                 >
-                  <h3 className="text-lg font-bold mb-2 text-gradient">
-                    {section.subTitle}
-                  </h3>
-                  <p className="text-foreground">{section.description}</p>
-                </div>
+                  <h4 className="text-base md:text-lg font-semibold mb-1.5 text-primary">{section.subTitle}</h4>
+                  <p className="text-sm md:text-base leading-relaxed text-foreground">{section.description}</p>
+                </motion.div>
               ))}
             </motion.div>
           )}
         </AnimatePresence>
       </div>
-    </div>
-  );
+    </section>
+  )
 }

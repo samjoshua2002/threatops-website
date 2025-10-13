@@ -46,7 +46,7 @@ export default function EcosystemSection() {
 
   return (
     <TooltipProvider delayDuration={80}>
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start mb-12">
           <div className="md:col-span-3">
             <div className="flex items-center gap-3">
